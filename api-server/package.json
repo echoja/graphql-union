@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=development tsup index.ts --format esm --watch --sourcemap  --target node18 --onSuccess \"node --enable-source-maps dist/index.mjs\""
+    "dev": "NODE_ENV=development tsup index.ts --format esm --watch --sourcemap  --target node18 --onSuccess \"node --enable-source-maps dist/index.mjs\"",
+    "build": "NODE_ENV=production tsup index.ts --format esm --sourcemap --target node18",
+    "start": "node --enable-source-maps dist/index.mjs"
   },
   "author": "",
   "license": "MIT",
