@@ -1,17 +1,8 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { readFileSync } from "fs";
-
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
+import { IQuery, IQueryBooksArgs } from "graphql-api-types";
+import { books } from "./books";
 
 const typeDefs = readFileSync("./schema.graphql").toString("utf-8");
 
@@ -19,7 +10,21 @@ const typeDefs = readFileSync("./schema.graphql").toString("utf-8");
 // This resolver retrieves books from the "books" array above.
 const resolvers = {
   Query: {
-    books: () => books,
+    books: async (
+      _parent: unknown,
+      args: IQueryBooksArgs,
+    ): Promise<IQuery["books"]> => {
+      switch (args.type) {
+        case "NOVEL":
+          return books.filter((book) => book.__typename === "Novel");
+        case "BIOGRAPHY":
+          return books.filter((book) => book.__typename === "Biography");
+        case "COMIC":
+          return books.filter((book) => book.__typename === "Comic");
+        default:
+          return books;
+      }
+    },
   },
 };
 
@@ -28,11 +33,6 @@ const resolvers = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  formatError(formattedError, error) {
-    console.error("formattedError", formattedError);
-    console.error("error", error);
-    return formattedError;
-  },
 });
 
 // Passing an ApolloServer instance to the `startStandaloneServer` function:

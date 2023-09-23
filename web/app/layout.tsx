@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,7 +17,38 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <header className="bg-gray-800 text-white">
+          <div className="container mx-auto py-4 px-6 flex justify-between items-center">
+            <h1 className="text-2xl font-bold">GraphQL Union</h1>
+            <nav>
+              <ul className="flex space-x-4">
+                <li>
+                  <Link className="hover:text-gray-300" href="/">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link className="hover:text-gray-300" href="/type/BIOGRAPHY">
+                    biography
+                  </Link>
+                </li>
+                <li>
+                  <Link className="hover:text-gray-300" href="/type/COMIC">
+                    comic
+                  </Link>
+                </li>
+                <li>
+                  <Link className="hover:text-gray-300" href="/type/NOVEL">
+                    novel
+                  </Link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+        <main className="container mx-auto py-4 px-6">{children}</main>
+      </body>
     </html>
   );
 }

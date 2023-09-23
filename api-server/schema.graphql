@@ -1,7 +1,32 @@
 # This "Book" type defines the queryable fields for every book in our data source.
-type Book {
-  title: String
-  author: String
+type Novel {
+  title: String!
+  author: String!
+  genre: String!
+}
+
+type Comic {
+  title: String!
+  author: String!
+  illustrator: String!
+}
+
+type Biography {
+  title: String!
+  author: String!
+  subject: String!
+}
+
+union Book = Novel | Comic | Biography
+
+type Query {
+  books(type: BookType): [Book!]!
+}
+
+enum BookType {
+  NOVEL
+  COMIC
+  BIOGRAPHY
 }
 
 # The "Query" type is special: it lists all of the available queries that

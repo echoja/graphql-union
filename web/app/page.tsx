@@ -7,7 +7,21 @@ export default async function Home() {
     query: gql`
       query Example {
         books {
-          title
+          ... on Novel {
+            author
+            title
+            genre
+          }
+          ... on Comic {
+            author
+            title
+            illustrator
+          }
+          ... on Biography {
+            author
+            title
+            subject
+          }
         }
       }
     `,

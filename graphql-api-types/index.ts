@@ -31,10 +31,29 @@ export type Scalars = {
   Float: { input: number; output: number };
 };
 
-export type IBook = {
-  __typename?: "Book";
-  author?: Maybe<Scalars["String"]["output"]>;
-  title?: Maybe<Scalars["String"]["output"]>;
+export type IBiography = {
+  __typename?: "Biography";
+  author: Scalars["String"]["output"];
+  subject: Scalars["String"]["output"];
+  title: Scalars["String"]["output"];
+};
+
+export type IBook = IBiography | IComic | INovel;
+
+export type IBookType = "BIOGRAPHY" | "COMIC" | "NOVEL";
+
+export type IComic = {
+  __typename?: "Comic";
+  author: Scalars["String"]["output"];
+  illustrator: Scalars["String"]["output"];
+  title: Scalars["String"]["output"];
+};
+
+export type INovel = {
+  __typename?: "Novel";
+  author: Scalars["String"]["output"];
+  genre: Scalars["String"]["output"];
+  title: Scalars["String"]["output"];
 };
 
 export type IQuery = {
@@ -42,9 +61,50 @@ export type IQuery = {
   books: Array<IBook>;
 };
 
+export type IQueryBooksArgs = {
+  type?: InputMaybe<IBookType>;
+};
+
 export type IExampleQueryVariables = Exact<{ [key: string]: never }>;
 
 export type IExampleQuery = {
   __typename?: "Query";
-  books: Array<{ __typename?: "Book"; title?: string | null }>;
+  books: Array<
+    | {
+        __typename?: "Biography";
+        author: string;
+        title: string;
+        subject: string;
+      }
+    | {
+        __typename?: "Comic";
+        author: string;
+        title: string;
+        illustrator: string;
+      }
+    | { __typename?: "Novel"; author: string; title: string; genre: string }
+  >;
+};
+
+export type IBooksByTypeQueryVariables = Exact<{
+  type?: InputMaybe<IBookType>;
+}>;
+
+export type IBooksByTypeQuery = {
+  __typename?: "Query";
+  books: Array<
+    | {
+        __typename?: "Biography";
+        author: string;
+        title: string;
+        subject: string;
+      }
+    | {
+        __typename?: "Comic";
+        author: string;
+        title: string;
+        illustrator: string;
+      }
+    | { __typename?: "Novel"; author: string; title: string; genre: string }
+  >;
 };
