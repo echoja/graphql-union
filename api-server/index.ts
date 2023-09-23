@@ -1,8 +1,8 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { readFileSync } from "fs";
-import { IQuery, IQueryBooksArgs } from "graphql-api-types";
 import { books } from "./books";
+import { IQuery, IQueryBooksArgs } from "./generated/graphql";
 
 const typeDefs = readFileSync("./schema.graphql").toString("utf-8");
 

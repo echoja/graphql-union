@@ -1,4 +1,4 @@
-import { IBook } from "graphql-api-types";
+import { IBook } from "./generated/graphql";
 
 export const books: IBook[] = [
   {

@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/ban-types */
-
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -63,48 +59,4 @@ export type IQuery = {
 
 export type IQueryBooksArgs = {
   type?: InputMaybe<IBookType>;
-};
-
-export type IExampleQueryVariables = Exact<{ [key: string]: never }>;
-
-export type IExampleQuery = {
-  __typename?: "Query";
-  books: Array<
-    | {
-        __typename?: "Biography";
-        author: string;
-        title: string;
-        subject: string;
-      }
-    | {
-        __typename?: "Comic";
-        author: string;
-        title: string;
-        illustrator: string;
-      }
-    | { __typename?: "Novel"; author: string; title: string; genre: string }
-  >;
-};
-
-export type IBooksByTypeQueryVariables = Exact<{
-  type?: InputMaybe<IBookType>;
-}>;
-
-export type IBooksByTypeQuery = {
-  __typename?: "Query";
-  books: Array<
-    | {
-        __typename?: "Biography";
-        author: string;
-        title: string;
-        subject: string;
-      }
-    | {
-        __typename?: "Comic";
-        author: string;
-        title: string;
-        illustrator: string;
-      }
-    | { __typename?: "Novel"; author: string; title: string; genre: string }
-  >;
 };

@@ -1,10 +1,9 @@
+import { gql } from "@/generated/graphql";
 import { client } from "@/graphql";
-import { gql } from "@apollo/client";
-import { IExampleQuery, IExampleQueryVariables } from "graphql-api-types";
 
 export default async function Home() {
-  const res = await client.query<IExampleQuery, IExampleQueryVariables>({
-    query: gql`
+  const res = await client.query({
+    query: gql(/* GraphQL */ `
       query Example {
         books {
           ... on Novel {
@@ -24,7 +23,7 @@ export default async function Home() {
           }
         }
       }
-    `,
+    `),
   });
 
   return (

@@ -1,28 +1,22 @@
 module.exports = {
   schema: ["./api-server/**/*.graphql"],
-
-  documents: ["./web/**/*.tsx", "./web/**/*.ts"],
+  documents: ["./web/**/*.tsx", "./web/**/*.ts", "!./web/generated/**/*"],
   overwrite: true,
   generates: {
-    "./graphql-api-types/index.ts": {
+    "./web/generated/graphql/": {
       hooks: {
         afterOneFileWrite: ["prettier --write"],
       },
-      plugins: [
-        {
-          add: {
-            content:
-              "\
-/* eslint-disable @typescript-eslint/no-explicit-any */\n\
-/* eslint-disable @typescript-eslint/naming-convention */\n\
-/* eslint-disable @typescript-eslint/ban-types */\n\
-\n\
-",
-          },
-        },
-        "typescript",
-        "typescript-operations",
-      ],
+      preset: "client",
+      presetConfig: {
+        gqlTagName: "gql",
+      },
+    },
+    "./api-server/generated/graphql.ts": {
+      hooks: {
+        afterOneFileWrite: ["prettier --write"],
+      },
+      plugins: ["typescript"],
       config: {
         typesPrefix: "I",
         enumsAsTypes: true,
