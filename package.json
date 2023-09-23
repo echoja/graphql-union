@@ -12,7 +12,7 @@
   "workspaces": [
     "api-server",
     "web",
-    "common"
+    "graphql-api-types"
   ],
   "keywords": [],
   "author": "",

@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "graphql": "^16.8.1",
+    "graphql-api-types": "*",
     "prettier": "^3.0.3",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"

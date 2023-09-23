@@ -4,7 +4,7 @@ module.exports = {
   documents: ["./web/**/*.tsx", "./web/**/*.ts"],
   overwrite: true,
   generates: {
-    "./common/src/generated/graphql.ts": {
+    "./graphql-api-types/index.ts": {
       hooks: {
         afterOneFileWrite: ["prettier --write"],
       },

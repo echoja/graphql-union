@@ -1,6 +1,6 @@
 import { client } from "@/graphql";
 import { gql } from "@apollo/client";
-import type { IExampleQuery, IExampleQueryVariables } from "common";
+import { IExampleQuery, IExampleQueryVariables } from "graphql-api-types";
 
 export default async function Home() {
   const res = await client.query<IExampleQuery, IExampleQueryVariables>({

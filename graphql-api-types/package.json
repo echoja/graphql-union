@@ -1,0 +1,22 @@
+{
+  "name": "graphql-api-types",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "source": "./index.ts",
+  "types": "./index.ts",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/echoja/graphql-union.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/echoja/graphql-union/issues"
+  },
+  "homepage": "https://github.com/echoja/graphql-union#readme"
+}
