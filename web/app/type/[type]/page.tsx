@@ -8,7 +8,7 @@ import {
   IBooksByTypeQueryVariables,
 } from "graphql-api-types";
 
-export const renderBooks = (books: IBook[]) => {
+const renderBooks = (books: IBook[]) => {
   return books.map((book) => {
     switch (book.__typename) {
       case "Novel":
