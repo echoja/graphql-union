@@ -1,4 +1,6 @@
-module.exports = {
+import { CodegenConfig } from "@graphql-codegen/cli";
+
+const config: CodegenConfig = {
   schema: ["./api-server/**/*.graphql"],
   documents: ["./web/**/*.tsx", "./web/**/*.ts", "!./web/generated/**/*"],
   overwrite: true,
@@ -10,6 +12,9 @@ module.exports = {
       preset: "client",
       presetConfig: {
         gqlTagName: "gql",
+      },
+      config: {
+        enumsAsTypes: true,
       },
     },
     "./api-server/generated/graphql.ts": {
@@ -29,3 +34,5 @@ module.exports = {
     },
   },
 };
+
+export default config;

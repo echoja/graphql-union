@@ -38,11 +38,7 @@ export type Biography = {
 
 export type Book = Biography | Comic | Novel;
 
-export enum BookType {
-  Biography = "BIOGRAPHY",
-  Comic = "COMIC",
-  Novel = "NOVEL",
-}
+export type BookType = "BIOGRAPHY" | "COMIC" | "NOVEL";
 
 export type Comic = {
   __typename?: "Comic";
