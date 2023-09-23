@@ -1,0 +1,23 @@
+{
+  "name": "api-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development tsup index.ts --format esm --watch --sourcemap  --target node18 --onSuccess \"node --enable-source-maps dist/index.mjs\""
+  },
+  "author": "",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "@apollo/server": "^4.9.3",
+    "common": "*"
+  },
+  "devDependencies": {
+    "graphql": "^16.8.1",
+    "prettier": "^3.0.3",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  }
+}

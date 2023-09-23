@@ -1,0 +1,29 @@
+{
+  "name": "graphql-union",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "turbo dev",
+    "codegen": "graphql-codegen --config codegen.js"
+  },
+  "workspaces": [
+    "api-server",
+    "web",
+    "common"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@graphql-codegen/add": "^5.0.0",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/introspection": "^4.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "prettier": "^3.0.3",
+    "turbo": "^1.10.14"
+  }
+}
