@@ -47,17 +47,6 @@ export type Comic = {
   title: Scalars["String"]["output"];
 };
 
-export type Mutation = {
-  __typename?: "Mutation";
-  addNovel: Novel;
-};
-
-export type MutationAddNovelArgs = {
-  author: Scalars["String"]["input"];
-  genre: Scalars["String"]["input"];
-  title: Scalars["String"]["input"];
-};
-
 export type Novel = {
   __typename?: "Novel";
   author: Scalars["String"]["output"];

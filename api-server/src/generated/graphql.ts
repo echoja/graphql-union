@@ -19,9 +19,6 @@ export type Incremental<T> =
   | {
       [P in keyof T]?: P extends " $fragmentName" | "__typename" ? T[P] : never;
     };
-export type RequireFields<T, K extends keyof T> = Omit<T, K> & {
-  [P in K]-?: NonNullable<T[P]>;
-};
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string };
@@ -47,17 +44,6 @@ export type IComic = {
   author: Scalars["String"]["output"];
   illustrator: Scalars["String"]["output"];
   title: Scalars["String"]["output"];
-};
-
-export type IMutation = {
-  __typename?: "Mutation";
-  addNovel: INovel;
-};
-
-export type IMutationAddNovelArgs = {
-  author: Scalars["String"]["input"];
-  genre: Scalars["String"]["input"];
-  title: Scalars["String"]["input"];
 };
 
 export type INovel = {
@@ -193,7 +179,6 @@ export type IResolversTypes = {
   BookType: IBookType;
   Boolean: ResolverTypeWrapper<Scalars["Boolean"]["output"]>;
   Comic: ResolverTypeWrapper<IComic>;
-  Mutation: ResolverTypeWrapper<{}>;
   Novel: ResolverTypeWrapper<INovel>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars["String"]["output"]>;
@@ -205,7 +190,6 @@ export type IResolversParentTypes = {
   Book: IResolversUnionTypes<IResolversParentTypes>["Book"];
   Boolean: Scalars["Boolean"]["output"];
   Comic: IComic;
-  Mutation: {};
   Novel: INovel;
   Query: {};
   String: Scalars["String"]["output"];
@@ -245,19 +229,6 @@ export type IComicResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type IMutationResolvers<
-  ContextType = any,
-  ParentType extends
-    IResolversParentTypes["Mutation"] = IResolversParentTypes["Mutation"],
-> = {
-  addNovel?: Resolver<
-    IResolversTypes["Novel"],
-    ParentType,
-    ContextType,
-    RequireFields<IMutationAddNovelArgs, "author" | "genre" | "title">
-  >;
-};
-
 export type INovelResolvers<
   ContextType = any,
   ParentType extends
@@ -286,7 +257,6 @@ export type IResolvers<ContextType = any> = {
   Biography?: IBiographyResolvers<ContextType>;
   Book?: IBookResolvers<ContextType>;
   Comic?: IComicResolvers<ContextType>;
-  Mutation?: IMutationResolvers<ContextType>;
   Novel?: INovelResolvers<ContextType>;
   Query?: IQueryResolvers<ContextType>;
 };
