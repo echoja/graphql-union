@@ -31,3 +31,7 @@ enum BookType {
 type Query {
   books: [Book!]!
 }
+
+type Mutation {
+  addNovel(title: String!, author: String!, genre: String!): Novel!
+}

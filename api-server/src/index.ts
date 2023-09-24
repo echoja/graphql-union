@@ -1,19 +1,17 @@
-import { ApolloServer } from "@apollo/server";
+import { ApolloServer, BaseContext } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { readFileSync } from "fs";
 import { books } from "./books";
-import { IQuery, IQueryBooksArgs } from "./generated/graphql";
+import { IResolvers } from "./generated/graphql";
 
-const typeDefs = readFileSync("./schema.graphql").toString("utf-8");
+const typeDefs = readFileSync("src/schema.graphql").toString("utf-8");
 
 // Resolvers define how to fetch the types defined in your schema.
 // This resolver retrieves books from the "books" array above.
-const resolvers = {
+
+const resolvers: IResolvers = {
   Query: {
-    books: async (
-      _parent: unknown,
-      args: IQueryBooksArgs,
-    ): Promise<IQuery["books"]> => {
+    books: async (_parent, args) => {
       switch (args.type) {
         case "NOVEL":
           return books.filter((book) => book.__typename === "Novel");
@@ -30,7 +28,7 @@ const resolvers = {
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
-const server = new ApolloServer({
+const server = new ApolloServer<BaseContext>({
   typeDefs,
   resolvers,
 });

@@ -17,12 +17,12 @@ const config: CodegenConfig = {
         enumsAsTypes: true,
       },
     },
-    "./api-server/generated/graphql.ts": {
+    "./api-server/src/generated/graphql.ts": {
       hooks: {
         afterOneFileWrite: ["prettier --write"],
       },
       schema: ["./api-server/**/*.graphql"],
-      plugins: ["typescript"],
+      plugins: ["typescript", "typescript-resolvers"],
       config: {
         typesPrefix: "I",
         enumsAsTypes: true,
