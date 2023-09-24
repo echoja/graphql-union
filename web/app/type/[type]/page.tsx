@@ -1,20 +1,7 @@
-import { Biography, Comic, Novel } from "@/components/render-books";
+import { Biography, Comic, Novel } from "@/components/book";
 import { gql } from "@/generated/graphql";
-import { Book, BookType } from "@/generated/graphql/graphql";
+import { BookType } from "@/generated/graphql/graphql";
 import { client } from "@/graphql";
-
-const renderBooks = (books: Book[]) => {
-  return books.map((book) => {
-    switch (book.__typename) {
-      case "Novel":
-        return <Novel key={book.title} {...book} />;
-      case "Comic":
-        return <Comic key={book.title} {...book} />;
-      case "Biography":
-        return <Biography key={book.title} {...book} />;
-    }
-  });
-};
 
 export default async function Books({
   params,
@@ -50,7 +37,16 @@ export default async function Books({
   return (
     <main>
       <h1 className="m-10 text-3xl font-bold">{params.type}</h1>
-      {renderBooks(res.data.books)}
+      {res.data.books.map((book) => {
+        switch (book.__typename) {
+          case "Novel":
+            return <Novel key={book.title} {...book} />;
+          case "Comic":
+            return <Comic key={book.title} {...book} />;
+          case "Biography":
+            return <Biography key={book.title} {...book} />;
+        }
+      })}
     </main>
   );
 }
