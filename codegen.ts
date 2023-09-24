@@ -1,11 +1,11 @@
 import { CodegenConfig } from "@graphql-codegen/cli";
 
 const config: CodegenConfig = {
-  schema: ["./api-server/**/*.graphql"],
-  documents: ["./web/**/*.tsx", "./web/**/*.ts", "!./web/generated/**/*"],
   overwrite: true,
   generates: {
     "./web/generated/graphql/": {
+      schema: ["./api-server/**/*.graphql"],
+      documents: ["./web/**/*.tsx", "./web/**/*.ts", "!./web/generated/**/*"],
       hooks: {
         afterOneFileWrite: ["prettier --write"],
       },
@@ -21,6 +21,7 @@ const config: CodegenConfig = {
       hooks: {
         afterOneFileWrite: ["prettier --write"],
       },
+      schema: ["./api-server/**/*.graphql"],
       plugins: ["typescript"],
       config: {
         typesPrefix: "I",
