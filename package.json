@@ -17,14 +17,14 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@graphql-codegen/cli": "^6.1.0",
-    "@graphql-codegen/client-preset": "^5.2.2",
-    "@graphql-codegen/introspection": "^5.0.0",
-    "@graphql-codegen/typescript": "^5.0.7",
-    "@graphql-codegen/typescript-operations": "^5.0.7",
-    "@graphql-codegen/typescript-resolvers": "^5.1.5",
+    "@graphql-codegen/cli": "^8.0.0",
+    "@graphql-codegen/client-preset": "^7.0.0",
+    "@graphql-codegen/introspection": "^7.0.0",
+    "@graphql-codegen/typescript": "^7.0.1",
+    "@graphql-codegen/typescript-operations": "^7.0.1",
+    "@graphql-codegen/typescript-resolvers": "^7.0.1",
     "@graphql-typed-document-node/core": "^3.2.0",
-    "prettier": "^3.7.4",
-    "turbo": "^2.7.2"
+    "prettier": "^3.10.1",
+    "turbo": "^2.11.11"
   }
 }
